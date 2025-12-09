@@ -14,18 +14,18 @@ public class C02Variable {
 
 //    정수 : byte(1바이트), int(4바이트), long(8바이트)
 
-//    byte a = 127;   // (-127 ~ 126, 0) 총 256개
-//    byte b = -128;
+    byte a = 127;   // (-127 ~ 126, 0) 총 256개
+    byte b = -128;
 
 //    자료형이 표현할 수 있는 범위를 넘어선 경우 오버플로우/언더플로우 발생
 //    오버플로우
 //    a++;
-//    System.out.println(a);
+//    System.out.println(a);  // -128
 //    언더플로우
 //    b--;
-//    System.out.println(b);
+//    System.out.println(b);  // 127
 
-        long l1 = 10;
+//        long l1 = 10;
 //    long은 명시적으로 L을 붙여서 해당 값이 long타입임을 명시
 //        long l2 = 20L;
 //        System.out.println(l1 + l2);
@@ -37,32 +37,32 @@ public class C02Variable {
 //        실수 연산은 기본적으로 오차 발생 : 소수점을 2진법으로 표현하는 부동소수점을 사용하기 때문
 //        double d2 = 0.1;
 //        미세한 오차는 소수점 절사를 통하여 당장에는 드러나지 않음.
-//        System.out.println(d2);
+//        System.out.println(d2);  // 0.1
 
 //        부동소수점 오차 테스트
 //        double total = 0;
 //        for(int i = 0; i<1000; i++) {
 //            total += 0.1;
 //        }
-//        System.out.println(total);
+//        System.out.println(total);  // 99.9999999999986  기대값:100
 
 //        소수점 연산 오차 해결방법1 : 소수를 정수로 변환 후 추후 다시 소수로 변환
 //        double total2 = 0;
 //        for(int i = 0; i<1000; i++) {
 //            total2 += (0.1*10);
 //        }
-//        System.out.println(total2 / 10);
+//        System.out.println(total2 / 10);  // 100.0
 
 //        소수점 연산 오차 해결방법2 : Bigdecimal 클래스 사용
 //        double d1 = 1.03;
 //        double d2 = 0.42;
-//        System.out.println(d1 - d2);
+//        System.out.println(d1 - d2);  //0.6100000000000001
 
 //        값을 입력받아 저장할때부터 문자로 입력을 받아 오차문제를 해결.
 //        BigDecimal b1 = new BigDecimal("1.03");
 //        BigDecimal b2 = new BigDecimal("0.42");
 //        double result = b1.subtract(b2).doubleValue();
-//        System.out.println(result);
+//        System.out.println(result);  // 0.61
 
 //        문자형 : char - 1글자(String - 1글자 이상)
 //        char c1 = '가';
@@ -70,7 +70,7 @@ public class C02Variable {
 
 //        String 또는 char 배열 최초 선언시 초기값이 null이 할당(int는 0, boolean은 false)
 //        String[] strArr = new String[10];
-//        System.out.println(strArr[0]);
+//        System.out.println(strArr[0]);  // null
 
 //        null은 값이 없다는 의미로서 하나의 타입
 //        String st1 = "";  // 빈 문자열이 할당
@@ -91,7 +91,7 @@ public class C02Variable {
 //            System.out.println("참입니다.");
 //        } else {
 //            System.out.println("거짓입니다.");
-//        }
+//        }  // 참입니다.
 
 //        타입변환 : (기본방향)작은타입에서 큰타입으로의 변환은 문제없이 변환
 //        int -> long : 문제없음
@@ -101,9 +101,9 @@ public class C02Variable {
 //        int -> double : 문제없음
 //        int i2 = 10;
 //        double d2 = i2;
-//        System.out.println(d2);
+//        System.out.println(d2);  // 10
 
-//        double -> int : 기본적으로는 허용 불가. 명시적 형변환은 가능.
+//        double -> int : 기본적으로는 큰타입에서 작은타입으로 형변환 허용 불가(데이터 유실 가능성). 명시적 형변환은 가능.
 //        double d3 = 10.5;
 //        int i3 = (int) d3;
 //        System.out.println(i3);  // 10
@@ -117,19 +117,35 @@ public class C02Variable {
 //        double d2 = (double) a/b;
 //        System.out.println(d2);  // 0.25
 
-//        char -> int : 문제 없음
+//        char -> int : 문제 없음 - 문자는 자기만의 숫자를 가지고 있어서(아스키코드)
 //            char c1 = 'a';
-//            int i1 = (int)c1;
+//            int i1 = (int) c1;
 //            int i2 = c1;
-//        System.out.println(i1);
-//        System.out.println(i2);
+//        System.out.println(i1);  // 97
+//        System.out.println(i2);  // 97
 //        예시)문자비교를 위한 묵시적 타입변환
 //        System.out.println('a' > 'b');  // false
 
-//        문제)알파벳 소문자 개수 세기
+//        문제)알파벳 개수 세기
+//        String st1 = "01abcd13힌글AZ123";
+//        int count = 0;
+//        for(int i=0; i<st1.length(); i++) {
+//            char ch = st1.charAt(i);
+//            if((ch >= 'a' && ch <='z') || (ch >= 'A' && ch <='Z') ) {
+//                count++;
+//            }
+//        }
+//        System.out.println(count);
 
+//        변수와 상수
+//        변수 : 재할당 가능, 재선언은 불가능.
+        int a1 = 10;
+        a1 = 20;  // 재할당 가능
+//        int a1 = 30; // 재선언 허용 안됨
 
-
+//        상수 : 값의 재할당 불가능. 정해진값(고정된값)을 사용시 상수 활용. final 키워드 사용
+        final double PI = 3.14;
+//        PI = 3.15;  // 재할당 불가
 
 
 
