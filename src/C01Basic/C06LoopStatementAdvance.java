@@ -17,7 +17,7 @@ public class C06LoopStatementAdvance {
 //        }
 //        System.out.println(total);
 
-//        두 수의 최대공약수 찾기  최대 나눠봐야할 숫자는 둘 중에 작은수 까지임. 시간없어서못품
+//        두 수의 최대공약수 찾기 최대 나눠봐야할 숫자는 둘 중에 작은수 까지임. (외우기)
 //        int a = 24;
 //        int b = 32;
 //        int min = Math.min(a,b);  // a>b?b:a;
@@ -35,7 +35,7 @@ public class C06LoopStatementAdvance {
 //        }
 //        System.out.println(answer);
 
-//        소수인지 여부 판별. 소수란 1과 자신을 제외한 숫자로 나누어지지 않는 1보다 큰 수. (잘 나옴)
+//        소수인지 여부 판별. 소수란 1과 자신을 제외한 숫자로 나누어지지 않는 1보다 큰 수. (외우기)
 //        Scanner sc = new Scanner(System.in);
 //        int num = Integer.parseInt(sc.nextLine());
 //        boolean check = false;
@@ -103,28 +103,15 @@ public class C06LoopStatementAdvance {
 
 //        라벨문 : 반복문에 이름을 붙이는 것.
         loop1:
-        for(int i=0; i<10; i++){
+        for (int i = 0; i < 10; i++) {
             boolean check = false;
-            for(int j=0; j<10; j++){
-                if(true) {
+            for (int j = 0; j < 10; j++) {
+                if (true) {
 //                    원하는 for문을 라벨링을 통해 break 또는 continue 시킬 수 있음.
-                   break loop1;
+                    break loop1;
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
