@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class C02Variable {
     public static void main(String[] args) {
+        /*
 //    변수의 명명규칙
 //    변수명에 의미의 분절이 일어나는 경우에는 camelcase 또는 _ 사용
     String myFirstName = "honggildong";
@@ -144,5 +145,6 @@ public class C02Variable {
 //        상수 : 값의 재할당 불가능. 정해진값(고정된값)을 사용시 상수 활용. final 키워드 사용
         final double PI = 3.14;
 //        PI = 3.15;  // 재할당 불가
+ */
     }
 }

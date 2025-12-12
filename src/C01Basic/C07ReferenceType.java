@@ -4,10 +4,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-/*
+
 public class C07ReferenceType {
     public static void main(String[] args) {
-
+/*
 //        기본(원시)자료형 : int, char, boolean 등
 //        특징 : 리터럴형식(값그대로)으로 값을 세팅.
         int a = 10;
@@ -31,7 +31,7 @@ public class C07ReferenceType {
         int b = 10;
         System.out.println(a == b);  // true
 
-//        참조자룧은 스택메모리에 힙메모리의 주소값이 저장되므로, ==로 비교시 메모리주소값을 비교
+//        참조자료형은 스택메모리에 힙메모리의 주소값이 저장되므로, ==로 비교시 메모리주소값을 비교
         String st1 = new String("hello");
         String st2 = new String("hello");
         System.out.println(st1 == st2);  // false
@@ -55,7 +55,7 @@ public class C07ReferenceType {
 
 //        다만, 예외적으로 배열(참조자료형)에는 원시자료형 세팅 가능
         int[] arr1 = {10, 20, 30};  // 원시자료형도 가능. 원시자료형을 관례적으로 많이 씀
-        Integer[] arr2 = {10, 20, 30};  //  wapper클래스도 가능
+        Integer[] arr2 = {10, 20, 30};  //  wrapper클래스도 가능
 
         int i1 = 10;
 //        Integer ig1 = new Integer(10);
@@ -64,7 +64,6 @@ public class C07ReferenceType {
 //        오토언박싱 : Wrapper클래스 -> 원시자료형 자동 형변환
         int i2 = ig1;
 
-
+ */
     }
 }
-*/

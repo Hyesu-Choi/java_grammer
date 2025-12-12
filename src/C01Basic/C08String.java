@@ -1,5 +1,6 @@
 package C01Basic;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.regex.Pattern;
@@ -65,8 +66,8 @@ public class C08String {
         st1 += '1';  // String에서 char를 더하면 String으로 변환
         System.out.println(st1);  // hello world1
 
-//        프로그래머스 - 플랫폼 사용법(나머지 구하기)
-//        프로그래머스 - 특정 문자 제거하기 (다시 풀어보기) 향상for문, toCharArray 사용해서
+//        프로그래머스 - 플랫폼 사용법(나머지 구하기) ⭐풀어보기
+//        프로그래머스 - 특정 문자 제거하기 (⭐다시 풀어보기) 향상for문, toCharArray 사용해서
         String answer = "";
         for(char ch : my_string.toCharArray()) {
             if(ch != letter.charAt(0)) {
@@ -81,7 +82,7 @@ public class C08String {
         System.out.println(st1.substring(0, 5));  // hello
         System.out.println(st1.substring(6, st1.length()));  // world. 마지막index는 length로 구하면됨
 
-//        프로그래머스 - 가운데 글자 가져오기
+//        프로그래머스 - 가운데 글자 가져오기 ⭐풀어보기
         String s= "asbc";
         String answer = "";
 
@@ -93,8 +94,6 @@ public class C08String {
         }
 //        return answer;
         System.out.println(answer);
-
-
 
 //        trim, strip : 문자열 양쪽 끝의 공백 제거. 성능은 strip이 더 좋음. 전통적으로 trim 많이 씀
         String st1 = "  hello world  ";
@@ -213,17 +212,36 @@ public class C08String {
 //        A를 stringbuilder로 변환
 //        A에 마지막값을 앞으로 insert, 마지막값 제거
 //        A와 B를 비교
+class Solution {
+    public int solution(String A, String B) {
+       if (A.length() != B.length()) return -1;
+        StringBuilder sb = new StringBuilder(A);
+        for (int i = 0; i < A.length(); i++) {
+            if (sb.toString().equals(B)) {
+                return i;
+            }
+            // 오른쪽으로 한 칸 밀기
+            char last = sb.charAt(sb.length() - 1);
+            sb.deleteCharAt(sb.length() - 1);
+            sb.insert(0, last);
+        }
+
+        return -1;
+    }
+}
 //        방법2) A+A 더해서 B있는지 확인
 
-//        문자열 비교 : 비교하면서 아스키코드값을 뺌
+//        문자열 비교 : 비교하면서 아스키코드값을 뺌. 문자 비교하면서 같은 문자 나오면 다음 문자로 가고, 다른문자 나오면 아스키코드 비교하는듯. 오름차순 내림차순 비슷한듯?
         String st1 = "hello";
         String st2 = "dello";
         String st3 = "hello";
         String st4 = "hfllo";
+        String st5 = "java";
         System.out.println(st1.compareTo(st2));  //양수. 4 (h-d)
         System.out.println(st2.compareTo(st1)); //음수. -4 (d-h)
         System.out.println(st1.compareTo(st3)); //0 . 문자열일치
         System.out.println(st4.compareTo(st3)); //양수. 1 (f-3)
+        System.out.println(st5.compareTo(st3));  // 양수. 2(j-h)
 */
 
 
