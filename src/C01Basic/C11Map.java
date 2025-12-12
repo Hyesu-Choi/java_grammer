@@ -88,7 +88,37 @@ public class C11Map {
         System.out.println(myMap);
 
 //        프로그래머스 : 완주하지 못한 선수.. 다품
+        Map<String, Integer> myMap = new HashMap<>();
+        for (String a : participant) {
+            if(myMap.containsKey(a)) {
+                myMap.put(a, myMap.get(a)+1);
+            } else {
+                myMap.put(a, 1);
+            }
+        }
+        for (String b : completion) {
+            myMap.put(b, myMap.get(b)-1);
+            if (myMap.get(b) == 0) {
+                myMap.remove(b);
+            }
+        }
+        // 여기서 myMap으로 써야 함!
+        for (String key : myMap.keySet()) {
+            answer = key;
+        }
+        return answer;
 //        프로그래머스 : 의상 ⭐다시 풀기
+        Map<String, Integer> map = new HashMap<>();
+        for(String[] a : clothes) {
+            String type = a[1];
+            map.put(type, map.getOrDefault(type, 0)+1);
+        }
+
+        int answer = 1;
+        for(int cnt : map.values()) {
+            answer *= (cnt + 1);
+        }
+        return answer - 1;
 
 //        가장 value가 큰 key값 찾기
         Map<String, Integer> myMap = new HashMap<>();
@@ -111,6 +141,33 @@ public class C11Map {
 //        맥스 value를 구한다(for문)
 //        해당 맥스  value를 갖는 key를 구한다. 모드 list에 더한다. (for문)
 //        list를 정렬한다. .0번째 값 출력
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        Map<String, Integer> map = new HashMap<>();
+        for(int i=0; i<n; i++) {
+           String book = br.readLine();
+            map.put(book, map.getOrDefault(book, 0)+1);
+        }  // map에 팔린것들 다 집어넣으면서 1개 이상 팔린건 카운트 올림
+
+        int max = Integer.MIN_VALUE;
+        String maxKey = "";
+        List<String> myList = new ArrayList<>();
+        for(String a : map.keySet()) {
+            int value = map.get(a);
+            if(max < value) {
+                max = value;
+                maxKey = a;
+            }
+        }  // max값 구한 for문
+
+        for(String b : map.keySet()) {
+            if(map.get(b) == max) {
+                myList.add(b);
+            }
+        }  // max구한것에서 같은값 있는지 확인해서 myList에 담는 for문
+
+        myList.sort(Comparator.naturalOrder());
+        System.out.println(myList.get(0));
           */
 //        TreeMap : key를 정렬(오름차순)하여 map을 저장
         Map<String, Integer> myMap = new TreeMap<>(); //오름차순
@@ -123,7 +180,7 @@ public class C11Map {
         myMap.put("hello1", 5);
         System.out.println(myMap);  //{hello1=5, hello2=4, hello3=3, hello4=2, hello5=1}
 
-//        백준 : 파일정리
+//        백준 : 파일정리 ⭐풀기
 
 
 
