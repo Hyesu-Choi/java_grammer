@@ -5,7 +5,7 @@ import java.util.*;
 public class C11Map {
     public static void main(String[] args) {
         /*
-//        map : key, value로 이루어진 자료구조. 키의 중복이 없다. 순서가 없다.
+//        map : key, value로 이루어진 자료구조. 키의 중복이 없다. 순서가 없다. O(1)의 복잡도.
 //        Map(String, Integer) 변수명 = new HashMap<>();
         Map<String, Integer> sports = new HashMap<>();
 //        특징 : 키는 중복이 없음. value는 중복이 가능.
@@ -14,8 +14,8 @@ public class C11Map {
         sports.put("배구", 2);
 //        sports.put("농구", 3); //키가 중복이라서 덮어쓰기가 됨
 //        특징 : map의 key에는 순서가 없음
-        System.out.println(sports);  //{농구=2, 배구=2, 축구=3}
-//        특징 : map에서 key값을 통한 검색 복잡도는 o(1).
+        System.out.println(sports);  //{배구=2, 농구=2, 축구=3}
+//        특징 : map에서 key값을 통한 검색 복잡도는 o(1). 해시값과 해시테이블 사용(해시함수). 해시충돌 방지위해 메모리 낭비 발생 가능성.
         System.out.println(sports.get("배구"));  //2
 
 //        map의 전체 value 데이터 출력
@@ -43,7 +43,7 @@ public class C11Map {
         sports.putIfAbsent("배구", 10);
         System.out.println(sports);  // {농구=3, 배구=2} 덮어쓰기 안됨
 
-//        containsKey : key가 있으면 true, 없으면 false
+//        containsKey : key가 있으면 true, 없으면 false. 제일 많이 씀.
         System.out.println(sports.containsKey("배구")); //true
         System.out.println(sports.containsKey("탁구")); //false
 
@@ -59,11 +59,10 @@ public class C11Map {
 //            } else {
 //                myMap.put(i, 1);
 //            }  // 이 위에 코드를 아래로 간단하게 표현할 수 있다.
-//            getOrDefailt(키값, 초기값) : key값이 있으면 있는 값 리턴, 없을경우 초기값 리털
+//            getOrDefailt(키값, 초기값) : key값이 있으면 있는 값 리턴, 없을경우 초기값 리털. 이것도 많이 씀
 //            a를 찾되, a의 키값이 있으면 myMap.get(a)리턴, 없으면 0을 리턴.
             myMap.put(i, myMap.getOrDefault(i, 0)+1);
         }
-        System.out.println(myMap);
 
 //        map의 value값 감소 로직
         String[] arr = {"농구", "축구", "농구", "야구", "축구"};
@@ -78,16 +77,15 @@ public class C11Map {
         }
         for(String b : arr2) {
             if(myMap.containsKey(b)) {
-                if(myMap.get(b) ==1) {
+                if(myMap.get(b) == 1) {
                     myMap.remove(b);
                 } else {
-                    myMap.put(b, myMap.get(b)-1);  // 아 put메서드로 업데이트 쳐야하는군.. remove로 하고있었음.. remove는 키랑 값 같이 지우는 메서드임..
+                    myMap.put(b, myMap.get(b)-1);
                 }
             }
         }
-        System.out.println(myMap);
 
-//        프로그래머스 : 완주하지 못한 선수.. 다품
+//        프로그래머스 : 완주하지 못한 선수
         Map<String, Integer> myMap = new HashMap<>();
         for (String a : participant) {
             if(myMap.containsKey(a)) {
@@ -166,9 +164,9 @@ public class C11Map {
             }
         }  // max구한것에서 같은값 있는지 확인해서 myList에 담는 for문
 
-        myList.sort(Comparator.naturalOrder());
-        System.out.println(myList.get(0));
-          */
+        myList.sort(Comparator.naturalOrder()); // 오름차순 정렬
+        System.out.println(myList.get(0));  /첫번쨰값 출력
+
 //        TreeMap : key를 정렬(오름차순)하여 map을 저장
         Map<String, Integer> myMap = new TreeMap<>(); //오름차순
         Map<String, Integer> myMap2 = new TreeMap<>(Comparator.reverseOrder());  // 내림차순
@@ -180,9 +178,46 @@ public class C11Map {
         myMap.put("hello1", 5);
         System.out.println(myMap);  //{hello1=5, hello2=4, hello3=3, hello4=2, hello5=1}
 
-//        백준 : 파일정리 ⭐풀기
+//        백준 : 파일정리
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int num = Integer.parseInt(br.readLine());
+        Map<String, Integer> myMap = new TreeMap<>();
+        for(int i=0; i<num; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine(),("."));
+            st.nextToken();
+            String file = st.nextToken();
+            myMap.put(file, myMap.getOrDefault(file, 0)+1);
+        }
+        StringBuilder sb = new StringBuilder();
+        for(String a : myMap.keySet()) {
+            sb.append(a + " " + myMap.get(a) + "\n");
+        }
+        System.out.println(sb);
 
-
+//        LinkedHashMap : 데이터 산입순서 보장(입력시간순 정렬)
+        Map<String, Integer> myMap = new LinkedHashMap<>();
+        myMap.put("hello5", 1);
+        myMap.put("hello4", 2);
+        myMap.put("hello3", 3);
+        myMap.put("hello2", 4);
+        myMap.put("hello1", 5);
+        for(String a: myMap.keySet()) {
+            System.out.println(a + " " +  myMap.get(a));  // 1 2 3 4 5
+        }
+     */
+//        Iterator를 활용한 출력
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("야구", 2);
+        myMap.put("축구", 3);
+        myMap.put("농구", 2);
+        Iterator<String> iters = myMap.keySet().iterator();
+//        next메서드는 데이터를 하나씩 소모시키면서 값을 반환
+        System.out.println(iters.next()); // 야구
+//        hasNext 메서드는 iterator안에 그 다음값이 있는지 없는지 boolean 리턴
+        System.out.println(iters.hasNext());  //true
+        while (iters.hasNext()) {
+            System.out.println(iters.next());  // 농구 축구
+        }
 
 
 
