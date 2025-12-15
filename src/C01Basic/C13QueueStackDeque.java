@@ -148,8 +148,26 @@ public class C13QueueStackDeque {
         return answer;
 
 //        프로그래머스 : 최대힙 : poll할때마다 최대값을 추출 ⭐풀기
-        Queue<Integer> dq2 = new PriorityQueue<>(Comparator.reverseOrder());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        Queue<Integer> que = new PriorityQueue<>(Comparator.reverseOrder());
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<N; i++) {
+            int num = Integer.parseInt(br.readLine());
 
+            if(num == 0) {
+                if(que.isEmpty()) {
+                    sb.append(0).append("\n");
+                } else {
+                    sb.append(que.poll()).append("\n");
+                }
+            } else {
+                que.add(num);
+            }
+
+        }
+        System.out.println(sb);
+    
 //        Stack : 후입선출의 자료구조
         Stack<Integer> myStack = new Stack<>();
         myStack.push(10);
