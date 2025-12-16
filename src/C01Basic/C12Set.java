@@ -16,7 +16,27 @@ public class C12Set {
         System.out.println(mySet);  //[야구, 농구, 축구]
         System.out.println(mySet.contains("야구")); //true. O(1)의 복잡도
 
-//        백준 : 수 찾기(1920) - set활용해서 찾기
+//        백준 : 수 찾기(1920)
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        Set<Integer> set = new HashSet<>();
+        for(int i=0; i<N; i++) {
+            int num = Integer.parseInt(st.nextToken());
+            set.add(num);
+        }
+        int M = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<M; i++) {
+            int num = Integer.parseInt(st.nextToken());
+            if(set.contains(num)) {
+                sb.append(1).append("\n");
+            } else {
+                sb.append(0).append("\n");
+            }
+        }
+        System.out.println(sb);
 
 //        TreeSet : 데이터를 오름차순 정렬
         Set<String> mySet2 = new TreeSet<>();
@@ -27,7 +47,42 @@ public class C12Set {
         System.out.println(mySet2);  //[농구, 야구, 축구]
 
 //        백준 : 숫자카드(10815)
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        Set<Integer> set = new HashSet<>();
+        for(int i=0; i<N; i++) {
+            int num = Integer.parseInt(st.nextToken());
+            set.add(num);
+        }
+
+        int M = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<M; i++) {
+            int num = Integer.parseInt(st.nextToken());
+            if(set.contains(num)) {
+                sb.append(1).append(" ");
+            } else {
+                sb.append(0).append(" ");
+            }
+        }
+        System.out.println(sb);
+
 //        프로그래머스 : 폰켓몬(종류)
+        Set<Integer> set = new HashSet<>();
+        for(int a : nums) {
+            set.add(a);
+        }
+        int monNums = set.size();
+        int maxMon = nums.length/2;
+        int answer = 0;
+        if( monNums < maxMon) {
+            answer = monNums;
+        } else {
+            answer = maxMon;
+        }
+        return answer;
 
 //        집합관련 함수 : 교집합(retailAll), 합집합(addAll), 차집합(removeAll)
         Set<String> s1 = new HashSet<>();
