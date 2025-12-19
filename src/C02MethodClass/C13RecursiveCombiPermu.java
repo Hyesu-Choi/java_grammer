@@ -14,13 +14,24 @@ public class C13RecursiveCombiPermu {
 //        }
 //       위 for문의 반복횟수(개수)는 동적으로 결정되지 않고, 정적으로 코딩할수밖에 없는 한계가 존재.
 //        recurFor(0, 3);
+//        for (int i = 0; i < 3; i++) {  // 재귀함수 풀어보면 이렇게 생김. for문이 3개가 반복됨.
+//            for (int j=0; j<3; j++){
+//                System.out.println("hello world");
+//            for (int j = 0; j < 3; j++) {
+//                System.out.println("hello world");
+//                for (int j = 0; j < 3; j++) {
+//                    System.out.println("hello world");
+//                }
+//            }
+//            }
+//        }
 
 //        List<Integer> myList = new ArrayList<>();
 //        myList.add(1);
 //        myList.add(2);
 //        myList.add(3);
 //        myList.add(4);
-//        숫자 1,2,3,4를 가지고 만들수 있는 2개짜리 숫자조합을 이중리스트에 담아 출력
+//        숫자 1,2,3,4를 가지고 만들수 있는 2개짜리 숫자조합을 이중리스트에 담아 출력..2개로 정해져있으니까 그냥 for문을 두 번 돌리면 됨.
 //        [[1,2] [1,3] [1,4] [2,3] [2,4] [3,4]]
 //        List<List<Integer>> doubeList = new ArrayList<>();
 //        for (int i=0; i<myList.size(); i++){
@@ -38,7 +49,8 @@ public class C13RecursiveCombiPermu {
 //        myList.add(2);
 //        myList.add(3);
 //        myList.add(4);
-////        재귀함수를 만들기 위한 for문 변형
+
+//        재귀함수를 만들기 위한 for문 변형
 //        List<List<Integer>> doubeList = new ArrayList<>();
 //        List<Integer> temp = new ArrayList<>();
 //        for (int i=0; i<myList.size(); i++){
@@ -53,14 +65,14 @@ public class C13RecursiveCombiPermu {
 //        System.out.println(doubeList);
 
 //        List<List<Integer>> doubleList = new ArrayList<>();
-//        combi(new ArrayList<>(), 0, myList, 4, doubleList); //원본, 2개짜리 조합, 조합을 담을 이중리스트
+//        combi(new ArrayList<>(), 0, myList, 4, doubleList); //임시리스트, 시작번호,  원본,몇개짜리 조합 만들지,  조합을 담을 이중리스트
 //        System.out.println(doubleList);
 
-        List<Integer> myList = new ArrayList<>();
-        myList.add(1);
-        myList.add(2);
-        myList.add(3);
-        myList.add(4);
+                    List<Integer> myList = new ArrayList<>();
+                    myList.add(1);
+                    myList.add(2);
+                    myList.add(3);
+                    myList.add(4);
 //        List<List<Integer>> doubeList = new ArrayList<>();
 //        List<Integer> temp = new ArrayList<>();
 //        boolean[] visitied = new boolean[myList.size()];
@@ -79,49 +91,51 @@ public class C13RecursiveCombiPermu {
 //            visitied[i]=false;
 //        }
 //        System.out.println(doubeList);
-        List<List<Integer>> doubleList = new ArrayList<>();
-        permu(new boolean[myList.size()], new ArrayList<>(), myList, 2, doubleList);
-        System.out.println(doubleList);
+                    List<List<Integer>> doubleList = new ArrayList<>();
+                    permu(new boolean[myList.size()], new ArrayList<>(), myList, 2, doubleList);
+                    System.out.println(doubleList);
 
 //        백준 : 15649(N과 M), 6603(로또)
 
-    }
+                }
 
-    public static void permu(boolean[] visited, List<Integer> temp, List<Integer> myList, int n, List<List<Integer>> doubleList){
-        if(temp.size()==n){
-            doubleList.add(new ArrayList<>(temp));
-            return;
-        }
-        for (int i=0; i<myList.size(); i++){
-            if(visited[i])continue;
-            temp.add(myList.get(i));
-            visited[i] = true;
-            permu(visited, temp, myList, n,  doubleList);
-            temp.remove(temp.size()-1);
-            visited[i] = false;
-        }
-    }
+                public static void permu ( boolean[] visited, List<Integer > temp, List < Integer > myList,int n, List<
+                List<Integer>>doubleList){
+                    if (temp.size() == n) {
+                        doubleList.add(new ArrayList<>(temp));
+                        return;
+                    }
+                    for (int i = 0; i < myList.size(); i++) {
+                        if (visited[i]) continue;
+                        temp.add(myList.get(i));
+                        visited[i] = true;
+                        permu(visited, temp, myList, n, doubleList);
+                        temp.remove(temp.size() - 1);
+                        visited[i] = false;
+                    }
+                }
 
-    public static void combi(List<Integer> temp, int start ,List<Integer> myList, int n, List<List<Integer>> doubleList){
-        if(temp.size()==n){
-            doubleList.add(new ArrayList<>(temp));
-            return;
-        }
-        for (int i=start; i<myList.size(); i++){
-            temp.add(myList.get(i));
-            combi(temp, i+1, myList, n,  doubleList);
-            temp.remove(temp.size()-1);
-        }
-    }
+                public static void combi (List < Integer > temp,int start, List<Integer > myList,int n, List<
+                List<Integer>>doubleList){
+                    if (temp.size() == n) {
+                        doubleList.add(new ArrayList<>(temp));
+                        return;
+                    }
+                    for (int i = start; i < myList.size(); i++) {
+                        temp.add(myList.get(i));
+                        combi(temp, i + 1, myList, n, doubleList);
+                        temp.remove(temp.size() - 1);
+                    }
+                }
 
-    public static void recurFor(int start, int end){
-        if(start==end){
-            return;
-        }
-        for (int i=0; i<3; i++){
-            System.out.println("hello world");
-            recurFor(start+1, end);
-        }
-    }
-}
+                public static void recurFor ( int start, int end){
+                    if (start == end) {
+                        return;
+                    }
+                    for (int i = 0; i < 3; i++) {
+                        System.out.println("hello world");
+                        recurFor(start + 1, end);
+                    }
+                }
+            }
 
