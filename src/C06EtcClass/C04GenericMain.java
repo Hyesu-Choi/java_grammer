@@ -16,7 +16,7 @@ public class C04GenericMain {
         intChange(intArr, 0, 1);
         System.out.println(Arrays.toString(intArr));  //[20, 10, 30]
 
-        allChange(stArr, 1, 2);
+        allChange(stArr, 1, 2);  // 제네릭 타입 선언 change 메서드
         allChange(intArr, 0, 2);
         System.out.println(Arrays.toString(stArr));  //[python, c++, java]
         System.out.println(Arrays.toString(intArr));  //[30, 10, 20]
@@ -57,10 +57,10 @@ public class C04GenericMain {
 }
 
 class GenericPerson<T>{
-    private T value;
+    private T value;  // 아무타입의 변수 넣을 수 있음
 
-    public GenericPerson(T vale) {
-        this.value = vale;
+    public GenericPerson(T value) {
+        this.value = value;
     }
 
     public T getVale() {

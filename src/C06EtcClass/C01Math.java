@@ -5,9 +5,9 @@ public class C01Math {
 //        Math.random() : 임의의 수 반환. 0.0 ~ 1.0 사이의 double 반환
         System.out.println(Math.random());  //0.2752058311
 //        로또번호 7개 뽑기. 0~99까지 임의 숫자
-//        for(int i=0; i<7; i++) {
-//            System.out.println( (int) (Math.random()*100) );
-//        }
+        for(int i=0; i<7; i++) {
+            System.out.println( (int) (Math.random()*100) );  // double반환되서 *100 해야 정수 나옴.
+        }
 //        Math.abc() : 절대값 반환
         System.out.println(Math.abs(-5));  //5
 

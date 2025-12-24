@@ -8,7 +8,6 @@ import java.util.Calendar;
 
 public class C02Calendar {
     public static void main(String[] args) {
-        /*
 //        java.util패키지의 Calendar클래스
         Calendar myCalendar = Calendar.getInstance();
         System.out.println(myCalendar.getTime());  //Tue Dec 23 09:39:15 KST 2025
@@ -33,7 +32,6 @@ public class C02Calendar {
         System.out.println(myLocalTime.getHour());
         System.out.println(myLocalTime.getMinute());
         System.out.println(myLocalTime.getSecond());
-   */
         LocalDateTime myLocalDateTime = LocalDateTime.now();
         System.out.println(myLocalDateTime.getYear());  //2025
         System.out.println(myLocalDateTime.getHour());  //10

@@ -142,6 +142,7 @@ public class C04StreamApi {
         }
         Optional<String> opt1 = Optional.ofNullable(null);
         System.out.println(opt1.get()); // 에러남. 있는지 없는지 확인해야함 밑에 코드로
+//        .isPresent() : Optional 객체가 있는지 확인. return : boolean
         if(opt1.isPresent()) {
             System.out.println(opt1.get().length());
         } else {

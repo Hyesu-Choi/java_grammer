@@ -20,10 +20,15 @@ public class MemberController {
                 String email = sc.nextLine();
                 System.out.println("비밀번호를 입력해주세요");
                 String password = sc.nextLine();
+//                사용자의 입력값 단순검증(이메일형식, 이름길이 등 db조회안해도되는경우..)
+                if (password.length() < 10) {
+                    System.out.println("입력값이 너무 짧습니다.");
+                    return;
+                }
 //                회원가입시 발생하는 예외를 적절히 try/catch
                 try {
                     memberService.register(name, email, password);
-                } catch (IllegalArgumentException e) {
+                } catch (IllegalArgumentException e) {  // 에러 더 많아지면 catch문 추가하면 됨..
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 }
@@ -55,6 +60,9 @@ public class MemberController {
                     memberService.login(email, password);
                     System.out.println("로그인 성공입니다.");
                 } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                } catch (NoSuchElementException e) {
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 }
