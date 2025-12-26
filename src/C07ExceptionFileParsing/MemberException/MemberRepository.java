@@ -17,14 +17,14 @@ public class MemberRepository {
         this.memberList.add(member);
     }
 
-    public Optional<Member> findByEmail(String email) {
+    public Optional<Member> findByEmail(String email) {  //NPE 피하기 위해 dto에서 member를 감싼 optional객체로 리턴해주면 좋음
 //        Member member = null;
 //        for (Member a : memberList) {
 //            if (a.getEmail().equals(email)) {
 //                member = a;
 //            }
 //        }
-//        return Optional.ofNullable(member);
+//        return Optional.ofNullable(member);  // 이거 대신 아래코드로 리턴
         return this.memberList.stream().filter(a -> a.getEmail().equals(email)).findFirst();
     }
 

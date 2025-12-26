@@ -15,7 +15,7 @@ public class MemberService {
     public void register(String name, String email, String password) throws IllegalArgumentException {
         // 예외 여러개 발생할꺼같으면 throws 예외1, 예외2 콤마로 구분해서 적으면 됨.
 //        List(DB)에 이메일이 중복일경우 예외발생
-        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);  // dto에서 optional로 리턴해줬으니까 여기서도 optional로 받아 써야함.
         if (optionalMember.isPresent()) {
             throw new IllegalArgumentException("이미 가입된 이메일 입니다.");
         }
